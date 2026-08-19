@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 · 视频背景</title>
+    <style>
+        /* ========== 全局重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+            color: #fff;
+            overflow: hidden;  /* 防止滚动条干扰全屏 */
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ========== 视频背景层 ========== */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;   /* 铺满全屏，裁剪适配 */
+            z-index: 0;
+        }
+
+        /* ========== 半透明遮罩层（让文字更清晰） ========== */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.45);  /* 调透明度控制背景可见度 */
+            z-index: 1;
+        }
+
+        /* ========== 内容容器（所有页面共用） ========== */
+        .page-container {
+            position: relative;
+            z-index: 2;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 24px;
+        }
+
+        /* ========== 导航栏 ========== */
+        .nav {
+            position: fixed;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 8px 18px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+        }
+        .nav button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        .nav button.active {
+            background: #ffffff;
+            color: #1e293b;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        /* ========== 每个页面（默认隐藏） ========== */
+        .page {
+            display: none;
+            text-align: center;
+            max-width: 720px;
+            width: 100%;
+            animation: fadeUp 0.5s ease;
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== 页面内容样式 ========== */
+        .page h1 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.25);
+        }
+        .page .sub {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .page p {
+            font-size: 16px;
+            line-height: 1.9;
+            opacity: 0.92;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(8px);
+            padding: 20px 28px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .page .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .page .tags span {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            padding: 6px 22px;
+            border-radius: 40px;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ========== 作品卡片 ========== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .project-grid a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            padding: 20px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.3s;
+        }
+        .project-card:hover {
+            background: rgba(255,255,255,0.18);
+            transform: scale(1.03);
+        }
+        .project-card h3 { font-size: 18px; margin-bottom: 4px; }
+        .project-card p { font-size: 13px; opacity: 0.8; padding: 0; background: none; backdrop-filter: none; border: none; }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 600px) {
+            .page h1 { font-size: 34px; }
+            .nav { top: 16px; padding: 6px 12px; gap: 4px; }
+            .nav button { font-size: 13px; padding: 6px 14px; }
+            .page p { padding: 16px 18px; font-size: 15px; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== 视频背景 ====== -->
+    <video id="bg-video" autoplay muted loop playsinline>
+        <!-- 替换成你的视频链接（支持 mp4 / webm） -->
+        <source src="video/nahida.mp4" type="video/mp4">
+        <!-- 如果视频加载失败，显示纯色背景 -->
+        您的浏览器不支持视频标签。
+    </video>
+
+    <!-- ====== 遮罩层 ====== -->
+    <div class="overlay"></div>
+
+    <!-- ====== 导航栏 ====== -->
+    <div class="nav">
+        <button class="active" data-page="page-home">🏠 首页</button>
+        <button data-page="page-about">👤 关于</button>
+        <button data-page="page-projects">📁 作品</button>
+    </div>
+
+    <!-- ====== 页面容器 ====== -->
+    <div class="page-container">
+
+        <!-- ===== 首页 ===== -->
+        <div id="page-home" class="page active">
+            <h1>SurinChi</h1>
+            <div class="sub">Python开发者 · 数学师范</div>
+            <p>
+                用代码构建快捷，用数学认识世界。
+            </p>
+            <div class="tags">
+                <span>Python</span>
+                <span>MATLAB</span>
+                <span>C++</span>
+            </div>
+        </div>
+
+        <!-- ===== 关于 ===== -->
+        <div id="page-about" class="page">
+            <h1>关于我</h1>
+            <div class="sub">华南师范大学 · 数学与应用数学</div>
+            <p>
+                English Name：SurinChi<br>
+                MBTI：INFP-T
+            </p>
+        </div>
+
+        <!-- ===== 作品 ===== -->
+        <div id="page-projects" class="page">
+            <h1>联系我</h1>
+            <div class="sub">社交媒体</div>
+            <div class="project-grid">
+                <a href="https://space.bilibili.com/1374048032" target="_blank">
+                    <div class="project-card">
+                        <h3>哔哩哔哩</h3>
+                        <p>点击跳转到bilibili.com</p>
+                    </div>
+                </a>
+                <a href="https://v.douyin.com/cCUmi-LA06o/" target="_blank">
+                    <div class="project-card">
+                        <h3>抖音</h3>
+                        <p>点击跳转到抖音</p>
+                    </div>
+                </a>
+                    <div class="project-card">
+                        <h3>UI 组件库</h3>
+                        <p>开源 React 工具包 · 800+ Star</p>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ====== JavaScript：切换页面 ====== -->
+    <script>
+        // 获取所有导航按钮和所有页面
+        const buttons = document.querySelectorAll('.nav button');
+        const pages = {
+            home: document.getElementById('page-home'),
+            about: document.getElementById('page-about'),
+            projects: document.getElementById('page-projects')
+        };
+
+        // 点击切换
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 1. 移除所有按钮的 active 类
+                buttons.forEach(b => b.classList.remove('active'));
+                // 2. 给当前按钮添加 active
+                this.classList.add('active');
+
+                // 3. 隐藏所有页面
+                Object.values(pages).forEach(p => p.classList.remove('active'));
+
+                // 4. 显示对应的页面
+                const pageId = this.dataset.page;  // 比如 "page-home"
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) targetPage.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
