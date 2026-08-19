@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人主页 · 视频背景</title>
+    <title>SurinChi的个人主页</title>
     <style>
         /* ========== 全局重置 ========== */
         * {
@@ -197,7 +197,7 @@
     <!-- ====== 视频背景 ====== -->
     <video id="bg-video" autoplay muted loop playsinline>
         <!-- 替换成你的视频链接（支持 mp4 / webm） -->
-        <source src="video/nahida.mp4" type="video/mp4">
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
         <!-- 如果视频加载失败，显示纯色背景 -->
         您的浏览器不支持视频标签。
     </video>
@@ -207,9 +207,9 @@
 
     <!-- ====== 导航栏 ====== -->
     <div class="nav">
-        <button class="active" data-page="page-home">🏠 首页</button>
-        <button data-page="page-about">👤 关于</button>
-        <button data-page="page-projects">📁 作品</button>
+        <button class="active" data-page="page-home">首页</button>
+        <button data-page="page-about">关于</button>
+        <button data-page="page-projects">联系</button>
     </div>
 
     <!-- ====== 页面容器 ====== -->
@@ -217,8 +217,9 @@
 
         <!-- ===== 首页 ===== -->
         <div id="page-home" class="page active">
+            <img src="Assets/images/avatar.png" alt="avatar" width=100></img>
             <h1>SurinChi</h1>
-            <div class="sub">Python开发者 · 数学师范</div>
+            <div class="sub">Python开发者 · 数学与应用数学</div>
             <p>
                 用代码构建快捷，用数学认识世界。
             </p>
@@ -232,11 +233,19 @@
         <!-- ===== 关于 ===== -->
         <div id="page-about" class="page">
             <h1>关于我</h1>
-            <div class="sub">华南师范大学 · 数学与应用数学</div>
-            <p>
-                English Name：SurinChi<br>
-                MBTI：INFP-T
-            </p>
+            <div class="sub">个人情况</div>
+                <div class="tags">
+                    <span>中国共青团 团员</span>
+                    <span>INFP-T</span>
+                    <span>天蝎</span>
+                    <span>超级大非酋</span>
+                    <span>五连歪</span>
+                    <span>广西</span>
+                </div>
+                <div class="sub"></div>
+                <p>
+                    这是一份自我介绍，脑补一下就好了~
+                </p>
         </div>
 
         <!-- ===== 作品 ===== -->
@@ -256,10 +265,17 @@
                         <p>点击跳转到抖音</p>
                     </div>
                 </a>
+            </div>
+            <div class="sub"></div>
+
+            <div class="sub">联系方式</div>
+            <div class="project-grid">
+                <a href="https://github.com/SurinChi" target="_blank">
                     <div class="project-card">
-                        <h3>UI 组件库</h3>
-                        <p>开源 React 工具包 · 800+ Star</p>
+                        <h3>GitHub</h3>
+                        <p>点击前往我的GitHub主页</p>
                     </div>
+                </a>
             </div>
         </div>
 
