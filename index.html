@@ -303,9 +303,74 @@
                         <p>点击前往我的GitHub主页</p>
                     </div>
                 </a>
+                <div class="project-card" id="wechat-card" style="cursor: pointer;">
+                    <h3>QQ</h3>
+                    <p>点击打开二维码</p>
+                </div>
             </div>
         </div>
 
+    </div>
+
+    <div id="qrcode-modal" style="
+        display: none;  /* 默认隐藏 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;  /* 点击背景关闭 */
+    ">
+        <!-- 弹窗内容 -->
+        <div style="
+            background: #fff;
+            padding: 32px 28px 28px 28px;
+            border-radius: 28px;
+            max-width: 360px;
+            width: 90%;
+            text-align: center;
+            cursor: default;  /* 点击内部不关闭 */
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            position: relative;
+        " onclick="event.stopPropagation();">
+        <!-- 关闭按钮 -->
+        <button onclick="closeQRCode()" style="
+            position: absolute;
+            top: 10px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: 0.2s;
+        " onmouseover="this.style.color='#1e293b'" onmouseout="this.style.color='#94a3b8'">×</button>
+        
+        <!-- 二维码图片 -->
+        <img id="qrcode-image" src="Assets/images/QQ_qr.jpg" alt="微信二维码" style="
+            width: 100%;
+            max-width: 280px;
+            border-radius: 16px;
+            margin: 8px 0 4px 0;
+        "></img>
+        <div class="sub">
+            <p style="
+                color: #475569;
+                font-size: 15px;
+                margin-top: 12px;
+                font-weight: 500;
+            ">非紧急情况请勿添加好友</p>
+            <p style="
+                color: #94a3b8;
+                font-size: 12px;
+                margin-top: 4px;
+            ">加好友务必注明来意，不备注不予通过。</p>
+        </div>
     </div>
 
     <!-- ====== JavaScript：切换页面 ====== -->
@@ -317,6 +382,27 @@
             about: document.getElementById('page-about'),
             projects: document.getElementById('page-projects')
         };
+
+        const modal = document.getElementById('qrcode-modal');
+
+        function openQRCode() {
+            modal.style.display = 'flex';  // 用 flex 让内容居中
+        }
+
+        function closeQRCode() {
+            modal.style.display = 'none';
+        }
+
+        document.getElementById('wechat-card').addEventListener('click', function(e) {
+            e.stopPropagation();  // 防止事件冒泡
+            openQRCode();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeQRCode();
+            }
+        });
 
         // 点击切换
         buttons.forEach(btn => {
