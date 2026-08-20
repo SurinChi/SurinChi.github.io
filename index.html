@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SurinChi的个人主页</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
     <style>
         /* ========== 全局重置 ========== */
         * {
@@ -216,6 +217,16 @@
             .page p { padding: 16px 18px; font-size: 15px; }
             .project-grid { grid-template-columns: 1fr; }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        #qrcode-modal {
+            animation: fadeIn 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -237,7 +248,8 @@
         <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
         <button class="active" data-page="page-home">首页</button>
         <button data-page="page-about">关于</button>
-        <button data-page="page-projects">联系</button>
+        <button data-page="page-contact">联系</button>
+        <button data-page="page-projects">作品</button>
     </div>
 
     <!-- ====== 页面容器 ====== -->
@@ -275,8 +287,8 @@
                 </p>
         </div>
 
-        <!-- ===== 作品 ===== -->
-        <div id="page-projects" class="page">
+        <!-- ===== 联系 ===== -->
+        <div id="page-contact" class="page">
             <h1>联系我</h1>
             <div class="sub">社交媒体</div>
             <div class="project-grid">
@@ -310,6 +322,38 @@
             </div>
         </div>
 
+        <!-- ===== 作品 ===== -->
+        <div id="page-projects" class="page">
+            <h1>过往作品</h1>
+            <div class="sub">已发布</div>
+            <div class="project-grid">
+                <a href="https://github.com/SurinChi/RandomNumberGenerator" target="_blank">
+                    <div class="project-card">
+                        <h3>随机数生成器</h3>
+                        <p>一款面向智教大屏的随机数生成器。</p>
+                    </div>
+                </a>
+                <a href="https://github.com/SurinChi/BMI-calculator" target="_blank">
+                    <div class="project-card">
+                        <h3>BMI计算器</h3>
+                        <p>作者太懒啦，没有设置介绍哦~</p>
+                    </div>
+                </a>
+            </div>
+            <div class="sub"></div>
+
+            <div class="sub">开发中</div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>EasiLogin</h3>
+                    <p>全新希沃白板自动登录集成方案</p>
+                </div>
+                <div class="project-card" id="project-card">
+                    <h3>ConConverter</h3>
+                    <p>跨平台、轻量化的照片/视频格式转换工具</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="qrcode-modal" style="
@@ -380,6 +424,7 @@
         const pages = {
             home: document.getElementById('page-home'),
             about: document.getElementById('page-about'),
+            contact: document.getElementById('page-contact'),
             projects: document.getElementById('page-projects')
         };
 
