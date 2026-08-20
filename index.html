@@ -72,6 +72,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;  /* 新增：垂直居中 */
         }
         .nav button {
             background: transparent;
@@ -94,6 +95,31 @@
             background: #ffffff;
             color: #1e293b;
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        /* ========== 导航栏头像（新增） ========== */
+        .nav-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;          /* 防止被挤压 */
+            transition: 0.25s;
+            display: block;          /* 确保显示 */
+        }
+        /* 当屏幕很窄时，头像略微缩小 */
+        @media (max-width: 600px) {
+            .nav-avatar {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        @media (max-width: 400px) {
+            .nav-avatar {
+                width: 22px;
+                height: 22px;
+            }
         }
 
         /* ========== 每个页面（默认隐藏） ========== */
@@ -207,6 +233,8 @@
 
     <!-- ====== 导航栏 ====== -->
     <div class="nav">
+        <!-- 新增：固定在导航栏最左侧的头像 -->
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
         <button class="active" data-page="page-home">首页</button>
         <button data-page="page-about">关于</button>
         <button data-page="page-projects">联系</button>
@@ -217,7 +245,6 @@
 
         <!-- ===== 首页 ===== -->
         <div id="page-home" class="page active">
-            <img src="Assets/images/avatar.png" alt="avatar" width=100></img>
             <h1>SurinChi</h1>
             <div class="sub">Python开发者 · 数学与应用数学</div>
             <p>
