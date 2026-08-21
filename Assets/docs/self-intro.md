@@ -3,17 +3,16 @@
 ## 关于我
 
 - **坐标**：广东 · 广州
-- **技能**：Python · MATLAB · C++
 - **MBTI**：INFP-T
 - **星座**：天蝎
 
 ## 技术栈
 
-| 类型 | ----- |
-|------|------|
+| 类型 | 工具 |
+|---|---|
 | 编程 | Python, C++, C |
 | 科学计算 | MATLAB |
-| 工具 | Git, VS Code, DeepSeek |
+| 工具 | Visual Studio Code, DeepSeek |
 
 ## 兴趣爱好
 
