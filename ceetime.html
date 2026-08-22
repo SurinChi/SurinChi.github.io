@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⏳ 高考倒计时 · SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到主页</button>
+    </div>
+
+    <div class="page-container">
+        <div class="cee-page">
+            <h1>广西壮族自治区普通高考</h1>
+            <div class="sub">⏳ 倒计时</div>
+
+            <div id="status-title">加载中...</div>
+
+            <div class="countdown" id="countdownContainer">
+                <div class="time-unit" id="unitDays">
+                    <div class="number" id="days">00</div>
+                    <span class="label">天</span>
+                </div>
+                <div class="time-unit" id="unitHours">
+                    <div class="number" id="hours">00</div>
+                    <span class="label">小时</span>
+                </div>
+                <div class="time-unit" id="unitMinutes">
+                    <div class="number" id="minutes">00</div>
+                    <span class="label">分钟</span>
+                </div>
+                <div class="time-unit" id="unitSeconds">
+                    <div class="number" id="seconds">00</div>
+                    <span class="label">秒</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function getGaokaoDate(year) {
+            return new Date(year, 5, 7, 9, 0, 0, 0);
+        }
+
+        function getGaokaoEndDate(year) {
+            return new Date(year, 5, 9, 18, 15, 0, 0);
+        }
+
+        function getTargetInfo() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+
+            const gaokaoStart = getGaokaoDate(currentYear);
+            const gaokaoEnd = getGaokaoEndDate(currentYear);
+            const nextGaokaoStart = getGaokaoDate(currentYear + 1);
+
+            if (now < gaokaoStart) {
+                return {
+                    target: gaokaoStart,
+                    title: `⏳ ${currentYear}年高考倒计时`
+                };
+            } else if (now >= gaokaoStart && now < gaokaoEnd) {
+                return {
+                    target: gaokaoEnd,
+                    title: `✍️ ${currentYear}年高考进行中`
+                };
+            } else {
+                return {
+                    target: nextGaokaoStart,
+                    title: `距离${currentYear + 1}年高考还有`
+                };
+            }
+        }
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        const statusTitle = document.getElementById('status-title');
+
+        const unitDays = document.getElementById('unitDays');
+        const unitHours = document.getElementById('unitHours');
+        const unitMinutes = document.getElementById('unitMinutes');
+        const unitSeconds = document.getElementById('unitSeconds');
+        const allUnits = [unitDays, unitHours, unitMinutes, unitSeconds];
+        const countdownContainer = document.getElementById('countdownContainer');
+
+        // ====== 🆕 更新浏览器标签栏标题 ======
+        function updateTabTitle(days, hours, minutes, seconds) {
+            // 判断是否已结束
+            const info = getTargetInfo();
+            const now = new Date();
+            if (info.target <= now) {
+                document.title = '🎉 高考已结束';
+                return;
+            }
+
+            // 构建时间字符串
+            let timeStr = '';
+            if (days > 0) {
+                timeStr = `${days}天${hours}时${minutes}分${seconds}秒`;
+            } else if (hours > 0) {
+                timeStr = `${hours}时${minutes}分${seconds}秒`;
+            } else if (minutes > 0) {
+                timeStr = `${minutes}分${seconds}秒`;
+            } else {
+                timeStr = `${seconds}秒`;
+            }
+
+            // 根据状态添加前缀
+            let prefix = '⏳';
+            if (info.title.includes('进行中')) {
+                prefix = '✍️';
+            } else if (info.title.includes('高考倒计时')) {
+                prefix = '⏳';
+            }
+
+            document.title = `${prefix} ${timeStr}`;
+        }
+
+        function updateCountdown() {
+            const info = getTargetInfo();
+            const target = info.target;
+            const now = new Date();
+
+            statusTitle.textContent = info.title;
+
+            const diff = target - now;
+
+            if (diff <= 0) {
+                statusTitle.textContent = '🎉 高考已结束，你已解放咯！';
+                daysEl.textContent = '00';
+                hoursEl.textContent = '00';
+                minutesEl.textContent = '00';
+                secondsEl.textContent = '00';
+                allUnits.forEach(u => u.classList.add('hidden'));
+                countdownContainer.classList.add('all-hidden');
+                document.title = '🎉 高考已结束';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = String(days).padStart(2, '0');
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minutesEl.textContent = String(minutes).padStart(2, '0');
+            secondsEl.textContent = String(seconds).padStart(2, '0');
+
+            unitDays.classList.toggle('hidden', days === 0);
+            unitHours.classList.toggle('hidden', days === 0 && hours === 0);
+            unitMinutes.classList.toggle('hidden', days === 0 && hours === 0 && minutes === 0);
+            unitSeconds.classList.toggle('hidden', days === 0 && hours === 0 && minutes === 0 && seconds === 0);
+
+            const allHidden = allUnits.every(u => u.classList.contains('hidden'));
+            countdownContainer.classList.toggle('all-hidden', allHidden);
+
+            // ====== 🆕 更新标签栏标题 ======
+            updateTabTitle(days, hours, minutes, seconds);
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                updateCountdown();
+            }
+        });
+    </script>
+
+</body>
+</html>
