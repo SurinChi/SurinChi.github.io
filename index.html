@@ -91,10 +91,6 @@
                         <p>点击前往</p>
                     </div>
                 </a>
-                <div class="project-card" id="wechat-card">
-                    <h3>QQ</h3>
-                    <p>点击打开二维码</p>
-                </div>
             </div>
         </div>
 
@@ -151,16 +147,6 @@
         </div>
     </div>
 
-    <!-- ====== 二维码弹窗 ====== -->
-    <div id="qrcode-modal">
-        <div class="modal-box" onclick="event.stopPropagation();">
-            <button class="modal-close" onclick="closeQRCode()">×</button>
-            <img src="Assets/images/QQ_qr.jpg" alt="QQ二维码">
-            <div class="modal-sub">非紧急情况请勿添加好友</div>
-            <div class="modal-hint">加好友务必注明来意，不备注不予通过</div>
-        </div>
-    </div>
-
     <!-- ====== JavaScript ====== -->
     <script>
         // ====== 导航切换 ======
@@ -181,30 +167,6 @@
                 const target = document.getElementById(this.dataset.page);
                 if (target) target.classList.add('active');
             });
-        });
-
-        // ====== 二维码弹窗 ======
-        const modal = document.getElementById('qrcode-modal');
-
-        function openQRCode() {
-            modal.style.display = 'flex';
-        }
-
-        function closeQRCode() {
-            modal.style.display = 'none';
-        }
-
-        document.getElementById('wechat-card').addEventListener('click', function(e) {
-            e.stopPropagation();
-            openQRCode();
-        });
-
-        modal.addEventListener('click', closeQRCode);
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.style.display === 'flex') {
-                closeQRCode();
-            }
         });
 
         // ====== 加载 Markdown ======
