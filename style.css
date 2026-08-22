@@ -1,0 +1,629 @@
+/* ========== 全局重置 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ========== 视频背景层 ========== */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* ========== 半透明遮罩层 ========== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* ========== 内容容器 ========== */
+.page-container {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 24px 40px;
+}
+
+/* ========== 导航栏 ========== */
+.nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 6px 16px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    align-items: center;
+    max-width: 95%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.nav button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.nav button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.nav button.active {
+    background: #ffffff;
+    color: #1e293b;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== 页面切换 ========== */
+.page {
+    display: none;
+    text-align: center;
+    max-width: 720px;
+    width: 100%;
+    animation: fadeUp 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== 页面内容样式 ========== */
+.page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.page .sub {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.page p {
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.92;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 18px 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.page .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.page .tags span {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    padding: 5px 18px;
+    border-radius: 40px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ========== 倒计时样式（仅 ceetime.html 使用） ========== */
+.countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1.8rem 0 1.2rem;
+    transition: all 0.4s ease;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    padding: 1.2rem 0.8rem;
+    border-radius: 28px;
+    min-width: 100px;
+    flex: 1 0 auto;
+    max-width: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+    overflow: hidden;
+}
+
+.time-unit.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    max-width: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 0;
+    border: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.number {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-feature-settings: "tnum";
+}
+
+.label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.3rem;
+    display: block;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 40px;
+    display: inline-block;
+    backdrop-filter: blur(2px);
+}
+
+.countdown.all-hidden {
+    gap: 0;
+    margin: 0.5rem 0;
+}
+
+#status-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    min-height: 3rem;
+    letter-spacing: 1px;
+}
+
+/* ========== 作品卡片（仅 index.html 使用） ========== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.project-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    padding: 18px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.03);
+}
+
+.project-card h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+.project-card p {
+    font-size: 12px;
+    opacity: 0.8;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+}
+
+/* ========== Markdown 内容区（仅 index.html 使用） ========== */
+#about-content {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 24px 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-height: 52vh;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+#about-content::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+#about-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+#about-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#about-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+#about-content h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+#about-content h2 {
+    font-size: 19px;
+    margin: 18px 0 8px 0;
+}
+#about-content h3 {
+    font-size: 16px;
+    margin: 12px 0 6px 0;
+}
+#about-content p {
+    margin-bottom: 8px;
+    line-height: 1.8;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    font-size: 14px;
+}
+#about-content ul {
+    padding-left: 22px;
+    margin-bottom: 10px;
+}
+#about-content li {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+#about-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+}
+#about-content th,
+#about-content td {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 10px;
+    text-align: left;
+}
+#about-content th {
+    background: rgba(255, 255, 255, 0.08);
+}
+#about-content blockquote {
+    border-left: 3px solid #6c9eff;
+    padding-left: 14px;
+    margin: 10px 0;
+    opacity: 0.85;
+}
+#about-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+#about-content a {
+    color: #6c9eff;
+    text-decoration: none;
+}
+#about-content a:hover {
+    text-decoration: underline;
+}
+
+/* ========== 二维码弹窗（仅 index.html 使用） ========== */
+#qrcode-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease;
+}
+
+#qrcode-modal .modal-box {
+    background: #fff;
+    padding: 28px 24px 24px 24px;
+    border-radius: 24px;
+    max-width: 340px;
+    width: 90%;
+    text-align: center;
+    cursor: default;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.modal-close:hover {
+    color: #1e293b;
+}
+
+#qrcode-modal img {
+    width: 100%;
+    max-width: 260px;
+    border-radius: 14px;
+    margin: 6px 0 2px 0;
+}
+
+#qrcode-modal .modal-sub {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    margin-top: 10px;
+}
+
+#qrcode-modal .modal-hint {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== 手机端适配 ========== */
+@media (max-width: 600px) {
+    .page-container {
+        padding: 70px 14px 20px;
+        justify-content: flex-start;
+    }
+
+    .page h1 {
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+
+    .page .sub {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .page p {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+
+    .page .tags span {
+        font-size: 11px;
+        padding: 4px 12px;
+    }
+
+    .project-card {
+        padding: 12px 14px;
+    }
+    .project-card h3 {
+        font-size: 15px;
+    }
+    .project-card p {
+        font-size: 11px;
+    }
+
+    .nav {
+        top: 10px;
+        padding: 4px 10px;
+        gap: 2px;
+        border-radius: 40px;
+    }
+    .nav button {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+    .nav-avatar {
+        width: 22px;
+        height: 22px;
+    }
+
+    #about-content {
+        max-height: 48vh;
+        padding: 16px 18px;
+        font-size: 13px;
+    }
+    #about-content h1 {
+        font-size: 20px !important;
+    }
+    #about-content h2 {
+        font-size: 16px !important;
+    }
+    #about-content table {
+        font-size: 11px !important;
+    }
+    #about-content th,
+    #about-content td {
+        padding: 4px 6px !important;
+    }
+    #about-content p {
+        font-size: 13px !important;
+    }
+    #about-content li {
+        font-size: 13px !important;
+    }
+    #about-content::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    #qrcode-modal .modal-box {
+        padding: 20px 16px 16px 16px;
+        max-width: 300px;
+    }
+    #qrcode-modal img {
+        max-width: 200px;
+    }
+    #qrcode-modal .modal-sub {
+        font-size: 13px;
+    }
+
+    .time-unit {
+        min-width: 70px;
+        padding: 0.8rem 0.2rem;
+    }
+    .number {
+        font-size: 2.6rem;
+    }
+    .label {
+        font-size: 1rem;
+    }
+
+    #status-title {
+        font-size: 17px;
+        min-height: 2.4rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav-avatar {
+        width: 18px;
+        height: 18px;
+    }
+    .nav button {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    .nav {
+        padding: 3px 8px;
+        gap: 1px;
+    }
+    #about-content {
+        max-height: 42vh;
+        padding: 12px 14px;
+    }
+    .time-unit {
+        min-width: 55px;
+        padding: 0.6rem 0.1rem;
+    }
+    .number {
+        font-size: 2.0rem;
+    }
+    #status-title {
+        font-size: 15px;
+    }
+}
+
+/* ========== ceetime.html 专用样式（不依赖 .page 切换） ========== */
+.cee-page {
+    display: block !important;    /* 强制显示，不受 .page 影响 */
+    text-align: center;
+    max-width: 720px;
+    width: 100%;
+    animation: fadeUp 0.5s ease;
+}
+
+.cee-page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cee-page .sub {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
