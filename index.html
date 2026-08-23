@@ -5,36 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SurinChi的个人主页</title>
     <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
-    <!-- ====== 引用外部 CSS ====== -->
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
     </script>
 </head>
 <body>
 
-    <!-- ====== 视频背景 ====== -->
     <video id="bg-video" autoplay muted loop playsinline>
         <source src="Assets/videos/nahida.mp4" type="video/mp4">
         您的浏览器不支持视频标签。
     </video>
 
-    <!-- ====== 遮罩层 ====== -->
     <div class="overlay"></div>
 
-    <!-- ====== 导航栏 ====== -->
     <div class="nav">
         <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
         <button class="active" data-page="page-home">首页</button>
-        <button data-page="page-about">关于</button>
-        <button data-page="page-contact">联系</button>
-        <button data-page="page-projects">作品</button>
         <button data-page="page-tools">工具</button>
+        <button data-page="page-about">关于</button>
+        <button data-page="page-projects">作品</button>
+        <button data-page="page-contact">联系</button>
     </div>
 
-    <!-- ====== 页面容器 ====== -->
     <div class="page-container">
 
-        <!-- ===== 首页 ===== -->
         <div id="page-home" class="page active">
             <h1>SurinChi</h1>
             <div class="sub">Python开发者 · 数学与应用数学</div>
@@ -46,7 +40,6 @@
             </div>
         </div>
 
-        <!-- ===== 关于 ===== -->
         <div id="page-about" class="page">
             <h1>关于我</h1>
             <div class="sub">个人情况</div>
@@ -64,7 +57,6 @@
             </div>
         </div>
 
-        <!-- ===== 联系 ===== -->
         <div id="page-contact" class="page">
             <h1>联系我</h1>
             <div class="sub">社交媒体</div>
@@ -94,7 +86,6 @@
             </div>
         </div>
 
-        <!-- ===== 作品 ===== -->
         <div id="page-projects" class="page">
             <h1>过往作品</h1>
             <div class="sub">已发布</div>
@@ -126,7 +117,6 @@
             </div>
         </div>
 
-        <!-- ===== 工具 ===== -->
         <div id="page-tools" class="page">
             <h1>自研网页工具</h1>
             <div class="sub">虽然没用，但是好玩</div>
@@ -137,57 +127,17 @@
                         <p>啧啧啧，高三补货真快~</p>
                     </div>
                 </a>
-                <a href="">
+                <a href="bpmtester.html">
                     <div class="project-card">
-                        <h3>没有更多啦</h3>
-                        <p>作者太懒啦，还在漫长的开发过程中~</p>
+                        <h3>在线BPM测试</h3>
+                        <p>跟着节奏点一点，测速快捷癫一癫</p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- ====== JavaScript ====== -->
-    <script>
-        // ====== 导航切换 ======
-        const buttons = document.querySelectorAll('.nav button');
-        const pageMap = {
-            home: document.getElementById('page-home'),
-            about: document.getElementById('page-about'),
-            contact: document.getElementById('page-contact'),
-            projects: document.getElementById('page-projects'),
-            tools: document.getElementById('page-tools')
-        };
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                buttons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                Object.values(pageMap).forEach(p => p.classList.remove('active'));
-                const target = document.getElementById(this.dataset.page);
-                if (target) target.classList.add('active');
-            });
-        });
-
-        // ====== 加载 Markdown ======
-        async function loadAboutMD() {
-            const container = document.getElementById('about-content');
-            try {
-                const response = await fetch("Assets/docs/self-intro.md");
-                if (!response.ok) throw new Error('文件加载失败');
-                const markdown = await response.text();
-                container.innerHTML = marked.parse(markdown);
-            } catch (error) {
-                container.innerHTML =
-                    `<div style="text-align:center;padding:30px 0;color:rgba(255,255,255,0.6);">
-                        ❌ 加载失败<br><span style="font-size:12px;opacity:0.5;">${error.message}</span>
-                    </div>`;
-                console.error('加载 about.md 失败:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', loadAboutMD);
-    </script>
-
+    <!-- ====== 引用外部 JS ====== -->
+    <script src="script/index.js"></script>
 </body>
 </html>

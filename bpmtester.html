@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPM 测试器 · SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到主页</button>
+    </div>
+
+    <div class="page-container">
+        <div class="bpm-page">
+            <h1>BPM测试</h1>
+            <div class="sub">跟着节奏点击空格或屏幕</div>
+
+            <div class="bpm-display" id="bpmDisplay">
+                <span class="bpm-number" id="bpmValue">--</span>
+                <span class="bpm-label">BPM</span>
+            </div>
+
+            <div class="bpm-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="tapCount">0</span>
+                    <span class="stat-label">点击次数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="avgInterval">--</span>
+                    <span class="stat-label">平均间隔 (ms)</span>
+                </div>
+            </div>
+
+            <button class="bpm-btn" id="tapBtn">点击这里 / Tap Here</button>
+
+            <div class="bpm-hint">
+                <p>连续点击或按 <kbd>空格 / Space</kbd> 键，至少 3 次后显示 BPM</p>
+                <p>⏱ 超过 3 秒未点击将自动重置</p>
+            </div>
+
+            <button class="bpm-reset" id="resetBtn">重置 / Reset</button>
+        </div>
+    </div>
+
+    <script src="script/bpmtester.js"></script>
+</body>
+</html>
