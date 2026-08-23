@@ -1,0 +1,101 @@
+/* ========== ceetime.html 专用样式（不依赖 .page 切换） ========== */
+.cee-page {
+    display: block !important;
+    text-align: center;
+    max-width: 720px;
+    width: 100%;
+    animation: fadeUp 0.5s ease;
+}
+
+.cee-page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cee-page .sub {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* ========== 倒计时样式 ========== */
+.countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1.8rem 0 1.2rem;
+    transition: all 0.4s ease;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    padding: 1.2rem 0.8rem;
+    border-radius: 28px;
+    min-width: 100px;
+    flex: 1 0 auto;
+    max-width: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+    overflow: hidden;
+}
+
+.time-unit.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    max-width: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 0;
+    border: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.number {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-feature-settings: "tnum";
+}
+
+.label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.3rem;
+    display: block;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 40px;
+    display: inline-block;
+    backdrop-filter: blur(2px);
+}
+
+.countdown.all-hidden {
+    gap: 0;
+    margin: 0.5rem 0;
+}
+
+#status-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    min-height: 3rem;
+    letter-spacing: 1px;
+}

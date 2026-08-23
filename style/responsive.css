@@ -1,0 +1,193 @@
+/* ========== 手机端适配 ========== */
+@media (max-width: 600px) {
+    .page-container {
+        padding: 70px 14px 20px;
+        justify-content: flex-start;
+    }
+
+    .page h1 {
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+
+    .page .sub {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .page p {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+
+    .page .tags span {
+        font-size: 11px;
+        padding: 4px 12px;
+    }
+
+    .project-card {
+        padding: 12px 14px;
+    }
+    .project-card h3 {
+        font-size: 15px;
+    }
+    .project-card p {
+        font-size: 11px;
+    }
+
+    .nav {
+        top: 10px;
+        padding: 4px 10px;
+        gap: 2px;
+        border-radius: 40px;
+    }
+    .nav button {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+    .nav-avatar {
+        width: 22px;
+        height: 22px;
+    }
+
+    #about-content {
+        max-height: 48vh;
+        padding: 16px 18px;
+        font-size: 13px;
+    }
+    #about-content h1 {
+        font-size: 20px !important;
+    }
+    #about-content h2 {
+        font-size: 16px !important;
+    }
+    #about-content table {
+        font-size: 11px !important;
+    }
+    #about-content th,
+    #about-content td {
+        padding: 4px 6px !important;
+    }
+    #about-content p {
+        font-size: 13px !important;
+    }
+    #about-content li {
+        font-size: 13px !important;
+    }
+    #about-content::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    #qrcode-modal .modal-box {
+        padding: 20px 16px 16px 16px;
+        max-width: 300px;
+    }
+    #qrcode-modal img {
+        max-width: 200px;
+    }
+    #qrcode-modal .modal-sub {
+        font-size: 13px;
+    }
+
+    /* ceetime 手机端 */
+    .time-unit {
+        min-width: 70px;
+        padding: 0.8rem 0.2rem;
+    }
+    .number {
+        font-size: 2.6rem;
+    }
+    .label {
+        font-size: 1rem;
+    }
+    #status-title {
+        font-size: 17px;
+        min-height: 2.4rem;
+    }
+
+    /* bpmtester 手机端 */
+    .bpm-page h1 {
+        font-size: 28px;
+    }
+    .bpm-page .sub {
+        font-size: 14px;
+    }
+    .bpm-display {
+        padding: 28px 20px;
+        margin: 12px 0 16px;
+    }
+    .bpm-number {
+        font-size: 56px;
+    }
+    .bpm-label {
+        font-size: 18px;
+    }
+    .bpm-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .stat-number {
+        font-size: 22px;
+    }
+    .bpm-btn {
+        font-size: 18px;
+        padding: 16px 28px;
+        max-width: 100%;
+    }
+    .bpm-hint {
+        font-size: 13px;
+    }
+
+    /* cee-page + bpm-page 通用 */
+    .cee-page h1,
+    .bpm-page h1 {
+        font-size: 28px;
+    }
+    .cee-page .sub,
+    .bpm-page .sub {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav-avatar {
+        width: 18px;
+        height: 18px;
+    }
+    .nav button {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    .nav {
+        padding: 3px 8px;
+        gap: 1px;
+    }
+    #about-content {
+        max-height: 42vh;
+        padding: 12px 14px;
+    }
+
+    /* ceetime 手机端超小屏 */
+    .time-unit {
+        min-width: 55px;
+        padding: 0.6rem 0.1rem;
+    }
+    .number {
+        font-size: 2.0rem;
+    }
+    #status-title {
+        font-size: 15px;
+    }
+
+    /* bpmtester 手机端超小屏 */
+    .bpm-number {
+        font-size: 42px;
+    }
+    .stat-number {
+        font-size: 18px;
+    }
+    .bpm-btn {
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+}

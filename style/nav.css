@@ -1,0 +1,55 @@
+/* ========== 导航栏 ========== */
+.nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 6px 16px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    align-items: center;
+    max-width: 95%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.nav button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.nav button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.nav button.active {
+    background: #ffffff;
+    color: #1e293b;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
