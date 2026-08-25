@@ -46,7 +46,7 @@
     padding: 28px 32px;
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    max-height: 55vh;
+    max-height: 62vh;              /* 从 55vh 调大到 62vh */
     overflow-y: auto;
     width: 100%;
     scrollbar-width: thin;
@@ -140,7 +140,7 @@
         font-size: 14px;
     }
     #quotes-content {
-        max-height: 48vh;
+        max-height: 68vh;          /* 从 48vh 调大到 68vh，显示更多内容 */
         padding: 16px 18px;
         font-size: 14px;
     }
@@ -152,9 +152,11 @@
     }
     #quotes-content p {
         font-size: 14px !important;
+        line-height: 1.9 !important;  /* 稍微增加行高，阅读更舒适 */
     }
     #quotes-content li {
         font-size: 14px !important;
+        line-height: 1.8 !important;
     }
     #quotes-content::-webkit-scrollbar {
         width: 3px;
@@ -163,7 +165,7 @@
 
 @media (max-width: 400px) {
     #quotes-content {
-        max-height: 42vh;
+        max-height: 62vh;          /* 超小屏稍微降低一点，留出更多空间给标题 */
         padding: 12px 14px;
     }
     #quotes-content h1 {
@@ -171,8 +173,20 @@
     }
     #quotes-content p {
         font-size: 13px !important;
+        line-height: 1.8 !important;
     }
     #quotes-content li {
         font-size: 13px !important;
+        line-height: 1.7 !important;
+    }
+}
+
+/* ========== 副标题在手机端缩小 ========== */
+@media (max-width: 600px) {
+    .quotes-page .sub {
+        font-size: 13px;           /* 从 14px 缩小到 13px */
+        margin-bottom: 12px;       /* 减小下边距 */
+        letter-spacing: 1.5px;
+        opacity: 0.75;
     }
 }
