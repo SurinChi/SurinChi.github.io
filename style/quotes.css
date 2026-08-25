@@ -1,0 +1,178 @@
+/* ========== quotes.html 专用样式 ========== */
+.quotes-page {
+    display: block !important;
+    text-align: center;
+    max-width: 820px;
+    width: 100%;
+}
+
+/* ====== 淡入动画 ====== */
+.quotes-page.fade-in {
+    animation: quoteFadeIn 0.45s ease forwards;
+}
+
+@keyframes quoteFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quotes-page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.quotes-page .sub {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* ========== 语录内容区 ========== */
+#quotes-content {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 28px 32px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-height: 55vh;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+#quotes-content::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+#quotes-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+#quotes-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#quotes-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* ========== Markdown 渲染样式 ========== */
+#quotes-content h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+#quotes-content h2 {
+    font-size: 20px;
+    margin: 20px 0 10px 0;
+}
+#quotes-content h3 {
+    font-size: 17px;
+    margin: 14px 0 6px 0;
+}
+#quotes-content p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    font-size: 15px;
+}
+#quotes-content ul {
+    padding-left: 24px;
+    margin-bottom: 12px;
+}
+#quotes-content li {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+#quotes-content blockquote {
+    border-left: 3px solid #6c9eff;
+    padding-left: 16px;
+    margin: 12px 0;
+    opacity: 0.85;
+}
+#quotes-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+#quotes-content a {
+    color: #6c9eff;
+    text-decoration: none;
+}
+#quotes-content a:hover {
+    text-decoration: underline;
+}
+#quotes-content hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 16px 0;
+}
+
+/* ========== 手机端适配 ========== */
+@media (max-width: 600px) {
+    .quotes-page h1 {
+        font-size: 28px;
+    }
+    .quotes-page .sub {
+        font-size: 14px;
+    }
+    #quotes-content {
+        max-height: 48vh;
+        padding: 16px 18px;
+        font-size: 14px;
+    }
+    #quotes-content h1 {
+        font-size: 20px !important;
+    }
+    #quotes-content h2 {
+        font-size: 17px !important;
+    }
+    #quotes-content p {
+        font-size: 14px !important;
+    }
+    #quotes-content li {
+        font-size: 14px !important;
+    }
+    #quotes-content::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+
+@media (max-width: 400px) {
+    #quotes-content {
+        max-height: 42vh;
+        padding: 12px 14px;
+    }
+    #quotes-content h1 {
+        font-size: 18px !important;
+    }
+    #quotes-content p {
+        font-size: 13px !important;
+    }
+    #quotes-content li {
+        font-size: 13px !important;
+    }
+}

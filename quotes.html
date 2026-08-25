@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>励志语录</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/quotes.css">
+    <link rel="stylesheet" href="style/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
+    </script>
+</head>
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+        <button class="active" data-file="gaokao">高考</button>
+        <button data-file="oral">高考口语考试</button>
+        <button data-file="schoolgame">校运会稿件</button>
+    </div>
+
+    <div class="page-container">
+        <div class="quotes-page" id="quotesPage">
+            <h1 id="quotesMainTitle">Loading</h1>
+            <div class="sub" id="quotesSubTitle">Loading</div>
+            <div id="quotes-content">
+                <div style="text-align:center;padding:40px 0;color:rgba(255,255,255,0.6);">⏳ 加载中...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/quotes.js"></script>
+</body>
+</html>
