@@ -51,7 +51,7 @@
     }
 
     #about-content {
-        max-height: 48vh;
+        max-height: 62vh;
         padding: 16px 18px;
         font-size: 13px;
     }
@@ -163,7 +163,7 @@
         gap: 1px;
     }
     #about-content {
-        max-height: 42vh;
+        max-height: 60vh;
         padding: 12px 14px;
     }
 
