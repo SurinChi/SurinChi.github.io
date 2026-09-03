@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器 - SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/random.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+        <button class="active" data-page="page-generator">生成器</button>
+        <button data-page="page-history">历史记录</button>
+    </div>
+
+    <div class="page-container">
+
+        <!-- ===== 生成器页 ===== -->
+        <div id="page-generator" class="random-page active">
+            <h1>随机数生成器</h1>
+            <div class="sub">
+                指定范围，一键生成<br>
+                Generate Random Numbers
+            </div>
+
+            <div class="random-display" id="resultDisplay">
+                <span class="result-number" id="resultNumber">🎲</span>
+            </div>
+
+            <div class="range-inputs">
+                <div class="input-group">
+                    <label for="minInput">最小值 / Min</label>
+                    <input type="number" id="minInput" value="1" class="range-input">
+                </div>
+                <div class="input-group">
+                    <label for="maxInput">最大值 / Max</label>
+                    <input type="number" id="maxInput" value="100" class="range-input">
+                </div>
+                <div class="input-group" id="countGroup">
+                    <label for="countInput">生成个数 / How many</label>
+                    <input type="number" id="countInput" value="1" min="1" max="100" class="range-input">
+                </div>
+            </div>
+
+            <button class="generate-btn" id="generateBtn">生成随机数 / Generate</button>
+
+            <div class="random-hint">
+                <p>
+                    点击按钮或按 <kbd>空格</kbd> 键生成<br>
+                    Press button or <kbd>Space</kbd> to Generate
+                </p>
+                <p>ⓘ 生成个数最多为 100 个 / Max 100 numbers</p>
+            </div>
+        </div>
+
+        <!-- ===== 历史记录页 ===== -->
+        <div id="page-history" class="random-page">
+            <h1>历史记录</h1>
+            <div class="sub">最近生成的随机数 / Recent Numbers</div>
+
+            <div id="historyStats">
+                <span><strong id="historyCount">0</strong> 条记录 / in total</span>
+                <div class="history-actions">
+                    <button class="export-btn" id="exportBtn">导出 / Export</button>
+                    <button class="clear-history-btn" id="clearHistoryBtn">清空全部 / Clear All</button>
+                </div>
+            </div>
+
+            <div id="historyList">
+                <div style="text-align:center;padding:40px 0;color:rgba(255,255,255,0.5);">
+                    ⓘ 还没有记录 / No records yet
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== 详情弹窗 ====== -->
+    <div id="detailModal" class="detail-modal">
+        <div class="modal-overlay" onclick="closeDetail()"></div>
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeDetail()">×</button>
+            <div class="modal-header">
+                <span class="modal-title" id="modalTitle">详情</span>
+                <span class="modal-range" id="modalRange">范围: 1 ~ 100</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+            <div class="modal-footer">
+                <span class="modal-count" id="modalCount">共 0 个数字</span>
+                <button class="modal-copy-btn" onclick="copyModalContent()">复制</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/random.js"></script>
+</body>
+</html>
