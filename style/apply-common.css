@@ -1,0 +1,232 @@
+/* ========== 申请页通用样式 ========== */
+.apply-page {
+    display: block !important;
+    text-align: center;
+    max-width: 640px;
+    width: 100%;
+    animation: fadeUp 0.5s ease;
+}
+
+.apply-page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.apply-page .sub {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* ========== 表单容器 ========== */
+.apply-form {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 32px 36px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    width: 100%;
+    max-height: 62vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+.apply-form::-webkit-scrollbar {
+    width: 5px;
+}
+
+.apply-form::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.apply-form::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.apply-form::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* ========== 表单分组 ========== */
+.apply-form .form-group {
+    margin-bottom: 20px;
+}
+
+.apply-form .form-group label {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.apply-form .form-group label .required {
+    color: #ff7b7b;
+    font-weight: 700;
+}
+
+.apply-form .form-group label .optional {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    font-weight: 300;
+}
+
+/* ========== 输入框 ========== */
+.apply-form .form-group input[type="text"],
+.apply-form .form-group input[type="email"],
+.apply-form .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    color: #fff;
+    font-family: inherit;
+    transition: 0.25s;
+    outline: none;
+    resize: vertical;
+}
+
+.apply-form .form-group input::placeholder,
+.apply-form .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.apply-form .form-group input:focus,
+.apply-form .form-group textarea:focus {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(108, 158, 255, 0.1);
+}
+
+.apply-form .form-group textarea {
+    min-height: 100px;
+    max-height: 200px;
+    line-height: 1.6;
+}
+
+/* ========== 输入提示 ========== */
+.apply-form .input-hint {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+    transition: color 0.25s;
+}
+
+.apply-form .input-hint.valid {
+    color: #81c784;
+}
+
+.apply-form .input-hint.invalid {
+    color: #ef5350;
+}
+
+/* ========== 提交按钮 ========== */
+.apply-form .submit-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    padding: 14px 40px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+    font-family: inherit;
+    letter-spacing: 1px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 8px;
+}
+
+.apply-form .submit-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02);
+}
+
+.apply-form .submit-btn:active {
+    transform: scale(0.97);
+}
+
+.apply-form .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========== 手机端适配 ========== */
+@media (max-width: 600px) {
+    .apply-page h1 {
+        font-size: 28px;
+    }
+
+    .apply-page .sub {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .apply-form {
+        padding: 22px 20px;
+        max-height: 65vh;
+        border-radius: 20px;
+    }
+
+    .apply-form .form-group {
+        margin-bottom: 16px;
+    }
+
+    .apply-form .form-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .apply-form .form-group input[type="text"],
+    .apply-form .form-group input[type="email"],
+    .apply-form .form-group textarea {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .apply-form .form-group textarea {
+        min-height: 80px;
+    }
+
+    .apply-form .submit-btn {
+        font-size: 15px;
+        padding: 12px 28px;
+    }
+}
+
+@media (max-width: 400px) {
+    .apply-form {
+        padding: 16px 14px;
+    }
+
+    .apply-form .form-group input[type="text"],
+    .apply-form .form-group input[type="email"],
+    .apply-form .form-group textarea {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .apply-form .submit-btn {
+        font-size: 14px;
+        padding: 11px 20px;
+    }
+}

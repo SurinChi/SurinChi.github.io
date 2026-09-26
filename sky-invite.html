@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光·遇 好友申请 - SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/apply-common.css">
+    <link rel="stylesheet" href="style/sky-invite.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+    </div>
+
+    <div class="page-container">
+        <div class="apply-page">
+            <h1>光·遇 好友申请</h1>
+            <div class="sub">请务必填写带 * 的信息，添加自我介绍可增加通过率</div>
+
+            <form class="apply-form" action="https://formsubmit.co/fefd9a52529fdb8abd5a26d33ed06ed4" method="POST">
+                <input type="hidden" name="_subject" value="光·遇 好友申请">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://surinchi.github.io/thanks.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_replyto" value="noreply@surinchi.github.io">
+
+                <div class="form-group">
+                    <label for="nick">备注 <span class="required">*</span></label>
+                    <input type="text" id="nick" name="nick" placeholder="怎么称呼你？" required maxlength="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="inviteCode">邀请码 <span class="required">*</span></label>
+                    <input type="text" id="inviteCode" name="invite_code" placeholder="XXXX-XXXX-XXXX" maxlength="14"
+                        autocomplete="off" required>
+                    <div class="input-hint" id="codeHint">提交前请确保你填写的邀请码格式正确且未被使用。</div>
+                </div>
+
+                <div class="form-group">
+                    <label>添加目的 <span class="required">*</span></label>
+                    <div class="purpose-options">
+                        <label class="purpose-item">
+                            <input type="radio" name="purpose" value="互火" required>
+                            <span class="purpose-label">🔥 互火</span>
+                        </label>
+                        <label class="purpose-item">
+                            <input type="radio" name="purpose" value="互心" required>
+                            <span class="purpose-label">❤️ 互心</span>
+                        </label>
+                        <label class="purpose-item">
+                            <input type="radio" name="purpose" value="纯想和我玩" required>
+                            <span class="purpose-label">🎮 想和我玩</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="intro">自我介绍 <span class="optional">（选填）</span></label>
+                    <textarea id="intro" name="intro" rows="4" placeholder="随便说点什么吧……" maxlength="200"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">立即提交</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script/sky-invite.js"></script>
+</body>
+
+</html>

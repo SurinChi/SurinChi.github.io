@@ -1,0 +1,72 @@
+/* 邀请码输入框特殊样式 */
+#inviteCode {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 18px !important;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* 目的选择（单选按钮组） */
+.purpose-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.purpose-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.purpose-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.purpose-label {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.25s ease;
+    user-select: none;
+    letter-spacing: 0.5px;
+}
+
+.purpose-item:hover .purpose-label {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.purpose-item input[type="radio"]:checked+.purpose-label {
+    background: rgba(108, 158, 255, 0.2);
+    border-color: rgba(108, 158, 255, 0.4);
+    color: #fff;
+    box-shadow: 0 0 0 3px rgba(108, 158, 255, 0.08);
+}
+
+/* 手机端 */
+@media (max-width: 600px) {
+    #inviteCode {
+        font-size: 16px !important;
+        letter-spacing: 2px !important;
+    }
+
+    .purpose-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .purpose-label {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}

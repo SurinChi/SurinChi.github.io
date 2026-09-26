@@ -1,0 +1,15 @@
+/* ========== 原神申请 · 专属样式 ========== */
+
+/* UID 输入框特殊样式 */
+#uidInput {
+    letter-spacing: 2px;
+    font-size: 17px !important;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+/* 邮箱输入框 */
+#emailInput {
+    letter-spacing: 0.5px;
+}

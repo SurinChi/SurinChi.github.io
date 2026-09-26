@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神 好友申请 - SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/apply-common.css">
+    <link rel="stylesheet" href="style/ys-apply.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+    </div>
+
+    <div class="page-container">
+        <div class="apply-page">
+            <h1>原神 好友申请</h1>
+            <div class="sub">
+                请务必填写带 * 的信息，添加自我介绍可提高通过率
+            </div>
+
+            <form class="apply-form" action="https://formsubmit.co/fefd9a52529fdb8abd5a26d33ed06ed4" method="POST">
+                <input type="hidden" name="_subject" value="原神 好友申请">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://surinchi.github.io/thanks.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_replyto" value="noreply@surinchi.github.io">
+
+                <div class="form-group">
+                    <label for="uidInput">你的UID <span class="required">*</span></label>
+                    <input type="text" id="uidInput" name="uid" placeholder="123456789" maxlength="12"
+                        autocomplete="off" inputmode="numeric" required>
+                    <div class="input-hint" id="uidHint">请输入 9 位数字 UID</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nicknameInput">你的原神昵称 <span class="required">*</span></label>
+                    <input type="text" id="nicknameInput" name="nickname" placeholder="请输入你的原神昵称" maxlength="12"
+                        autocomplete="off" inputmode="numeric" required>
+                    <div class="input-hint" id="nicknameHint">审核结束前，请勿更改昵称</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailInput">邮箱 <span class="required">*</span></label>
+                    <input type="email" id="emailInput" name="email" placeholder="your@email.com" autocomplete="email"
+                        required>
+                    <div class="input-hint" id="emailHint">
+                        审核通过后，会以邮件形式通知，请注意查收</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="purposeInput">申请目的 <span class="required">*</span></label>
+                    <textarea id="purposeInput" name="purpose" rows="3" placeholder="想和我一起做什么？比如：互刷周本、一起挖矿、纯想加个好友……"
+                        maxlength="200" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="introInput">自我介绍 <span class="optional">（选填）</span></label>
+                    <textarea id="introInput" name="intro" rows="4" placeholder="随便说点什么吧……" maxlength="200"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">立即提交</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script/ys-apply.js"></script>
+</body>
+
+</html>
