@@ -78,17 +78,6 @@
         width: 3px;
     }
 
-    #qrcode-modal .modal-box {
-        padding: 20px 16px 16px 16px;
-        max-width: 300px;
-    }
-    #qrcode-modal img {
-        max-width: 200px;
-    }
-    #qrcode-modal .modal-sub {
-        font-size: 13px;
-    }
-
     /* ceetime 手机端 */
     .time-unit {
         min-width: 70px;

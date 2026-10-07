@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 · 页面走丢了 - SurinChi</title>
+    <meta name="description" content="你要找的页面不存在或已被移动，回到 SurinChi 的个人主页继续浏览。">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/Assets/images/avatar.png" type="image/x-icon">
+    <!-- ====== 引用 CSS ====== -->
+    <!-- 404 页会在任意层级被访问，因此统一使用根路径引用资源 -->
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/nav.css">
+    <link rel="stylesheet" href="/style/404.css">
+    <link rel="stylesheet" href="/style/responsive.css">
+</head>
+
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="/Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="/Assets/images/avatar.png" alt="avatar">
+        <button onclick="location.href='/'">回到首页</button>
+    </div>
+
+    <div class="page-container">
+
+        <div class="err-page">
+            <div class="err-code">404</div>
+            <h1>页面走丢了</h1>
+            <p>你要找的页面不存在，或者已经被移动到别处。</p>
+            <button class="err-btn" onclick="location.href='/'">🏠 回到首页</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
