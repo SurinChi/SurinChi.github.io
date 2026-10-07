@@ -11,23 +11,23 @@
 > *用代码构建快捷，用数学认识世界。*
 
 ## 基础信息
-|||
+| Key | Value |
 |---|---|
-| 坐标 | 广东 · 广州，广东 · 佛山，~~广西 · 梧州~~ |
+| 坐标 | 广东 · 佛山 |
 | MBTI | INFP-T |
 | 星座 | 天蝎 |
 
-## 技术栈
+## 我的工具
 
 | 类型 | 工具 |
 |---|---|
-| 编程 | *Python, C++, C* |
-| 科学计算 | *MATLAB* |
-| 工具 | *Visual Studio Code, DeepSeek* |
+| 语言 | *Python, C++, C* |
+| 剪辑 | *剪映Pro, Image Toolbox* |
+| 工具 | *Visual Studio, Visual Studio Code, DeepSeek Harness* |
 
 ## 兴趣爱好
 
-| 类别 | 名称 | What to Play
+| 类别 | 名称 | What to Play |
 |------|------|-----|
 | 游戏 | 原神 | *Genshin Impact* |
 | 游戏 | 光·遇| *Sky: Children of Light* |
@@ -35,8 +35,7 @@
 
 ## 在哪里可以找到我
  - 绝对能：微信~~（你都有我微信了，你还看我网站干嘛呢）~~
- - 大概率：遇境、GitHub
- - 小概率：云野、暮土、至冬、~~六分街~~
+ - 有概率：游戏内、GitHub、抖音
 
 ## 在游戏里找我玩
 > 请你先提交申请，审核将于三个工作日内进行

@@ -6,7 +6,7 @@ function goHome() {
 // ====== DOM 引用 ======
 const inviteCodeInput = document.getElementById('inviteCode');
 const codeHint = document.getElementById('codeHint');
-const form = document.querySelector('.sky-form');
+const form = document.querySelector('.apply-form');
 const submitBtn = document.getElementById('submitBtn');
 
 // ====== 邀请码格式校验 ======

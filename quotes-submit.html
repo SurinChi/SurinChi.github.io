@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="励志语录投稿：填写你的称呼、语录内容与推荐分类，被采纳后会加入站内语录合集。">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SurinChi">
+    <meta property="og:title" content="励志语录投稿 - SurinChi">
+    <meta property="og:description" content="励志语录投稿：填写你的称呼、语录内容与推荐分类，被采纳后会加入站内语录合集。">
+    <meta property="og:url" content="https://surinchi.github.io/quotes-submit.html">
+    <meta property="og:image" content="https://surinchi.github.io/Assets/images/avatar.png">
+    <meta name="twitter:card" content="summary">
+    <title>励志语录投稿 - SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/apply-common.css">
+    <link rel="stylesheet" href="style/quotes-submit.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+        <button onclick="location.href='quotes.html'">返回语录</button>
+    </div>
+
+    <div class="page-container">
+        <div class="apply-page">
+            <h1>励志语录投稿</h1>
+            <div class="sub">把你珍藏的句子留在这里，被采纳后会加入语录合集</div>
+
+            <form class="apply-form" action="https://formsubmit.co/fefd9a52529fdb8abd5a26d33ed06ed4" method="POST">
+                <input type="hidden" name="_subject" value="励志语录投稿">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://surinchi.github.io/thanks.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_replyto" value="noreply@surinchi.github.io">
+
+                <div class="form-group">
+                    <label for="nick">你的称呼 <span class="required">*</span></label>
+                    <input type="text" id="nick" name="nick" placeholder="怎么称呼你？也可以填「匿名」" maxlength="30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quoteText">语录内容 <span class="required">*</span></label>
+                    <textarea id="quoteText" name="quote" rows="5" placeholder="把你喜欢的句子写在这里……" maxlength="300"
+                        required></textarea>
+                    <div class="input-hint" id="quoteHint">至少 4 个字，最多 300 字</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="source">出处 / 作者 <span class="optional">（选填）</span></label>
+                    <input type="text" id="source" name="source" placeholder="例如：泰戈尔 /《论语》/ 原创" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label>推荐分类 <span class="required">*</span></label>
+                    <div class="choice-options">
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="高考冲刺" required>
+                            <span class="choice-label">高考冲刺</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="英语口语考试">
+                            <span class="choice-label">英语口语</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="校运会稿件">
+                            <span class="choice-label">校运会</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="其他">
+                            <span class="choice-label">其他</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">邮箱 <span class="optional">（选填，便于通知采纳结果）</span></label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+                    <div class="input-hint" id="emailHint">不填也可以，只是无法收到采纳通知</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">想对我说的话 <span class="optional">（选填）</span></label>
+                    <textarea id="message" name="message" rows="3" placeholder="随便说点什么吧……" maxlength="200"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">立即投稿</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script/quotes-submit.js"></script>
+</body>
+
+</html>
