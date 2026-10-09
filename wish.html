@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="许愿新功能：告诉 SurinChi 你想要什么新功能或新工具，被采纳后会加入本站。">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SurinChi">
+    <meta property="og:title" content="许愿新功能 - SurinChi">
+    <meta property="og:description" content="许愿新功能：告诉 SurinChi 你想要什么新功能或新工具，被采纳后会加入本站。">
+    <meta property="og:url" content="https://surinchi.github.io/wish.html">
+    <meta property="og:image" content="https://surinchi.github.io/Assets/images/avatar.png">
+    <meta name="twitter:card" content="summary">
+    <title>许愿新功能 - SurinChi</title>
+    <link rel="icon" href="Assets/images/avatar.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/apply-common.css">
+    <link rel="stylesheet" href="style/wish.css">
+    <link rel="stylesheet" href="style/responsive.css">
+</head>
+
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="Assets/videos/nahida.mp4" type="video/mp4">
+        您的浏览器不支持视频标签。
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="nav">
+        <img class="nav-avatar" src="Assets/images/avatar.png" alt="avatar">
+        <button onclick="goHome()">回到首页</button>
+    </div>
+
+    <div class="page-container">
+        <div class="apply-page">
+            <h1>许愿新功能</h1>
+            <div class="sub">把你想要的新功能告诉我，说不定下一个就实现了</div>
+
+            <form class="apply-form" action="https://formsubmit.co/fefd9a52529fdb8abd5a26d33ed06ed4" method="POST">
+                <input type="hidden" name="_subject" value="许愿新功能">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://surinchi.github.io/thanks.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_replyto" value="noreply@surinchi.github.io">
+
+                <div class="form-group">
+                    <label for="nick">你的称呼 <span class="optional">（选填）</span></label>
+                    <input type="text" id="nick" name="nick" placeholder="怎么称呼你？也可以填「匿名」" maxlength="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="featureText">你想要的新功能 <span class="required">*</span></label>
+                    <textarea id="featureText" name="feature" rows="4" placeholder="描述一下你想要什么……" maxlength="300"
+                        required></textarea>
+                    <div class="input-hint" id="featureHint">至少 4 个字，最多 300 字</div>
+                </div>
+
+                <div class="form-group">
+                    <label>功能类型 <span class="required">*</span></label>
+                    <div class="choice-options">
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="网页工具" required>
+                            <span class="choice-label">实用工具</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="申请系统">
+                            <span class="choice-label">申请系统</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="视觉与动画">
+                            <span class="choice-label">视觉动画</span>
+                        </label>
+                        <label class="choice-item">
+                            <input type="radio" name="category" value="其他">
+                            <span class="choice-label">其他</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="usecase">为什么想要它 <span class="optional">（选填）</span></label>
+                    <textarea id="usecase" name="usecase" rows="3" placeholder="它能在什么场景帮到你？" maxlength="200"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">邮箱 <span class="optional">（选填，便于通知）</span></label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+                    <div class="input-hint" id="emailHint">不填也可以，只是收不到实现通知</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">想对我说的话 <span class="optional">（选填）</span></label>
+                    <textarea id="message" name="message" rows="3" placeholder="随便说点什么吧……" maxlength="200"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">许下愿望</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script/wish.js"></script>
+</body>
+
+</html>

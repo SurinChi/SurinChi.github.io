@@ -1,0 +1,26 @@
+/* ========== 许愿新功能 · 专属样式 ========== */
+
+/* 功能描述输入框 */
+#featureText {
+    min-height: 120px;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+/* 邮箱 */
+#email {
+    letter-spacing: 0.5px;
+}
+
+/* ========== 手机端适配 ========== */
+@media (max-width: 600px) {
+    #featureText {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 400px) {
+    #featureText {
+        min-height: 90px;
+    }
+}
