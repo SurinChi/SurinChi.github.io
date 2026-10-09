@@ -3,7 +3,7 @@
     text-align: center;
     max-width: 520px;
     width: 100%;
-    animation: errFadeUp 0.55s ease both;
+    animation: fadeUp 0.5s ease both;
 }
 
 .err-code {
@@ -55,17 +55,6 @@
 
 .err-btn:active {
     transform: translateY(0) scale(0.97);
-}
-
-@keyframes errFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* ========== 手机端 ========== */

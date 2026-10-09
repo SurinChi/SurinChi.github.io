@@ -6,20 +6,9 @@
     width: 100%;
 }
 
-/* ====== 淡入动画 ====== */
+/* ====== 淡入动画（统一引用 fadeUp） ====== */
 .quotes-page.fade-in {
-    animation: quoteFadeIn 0.45s ease forwards;
-}
-
-@keyframes quoteFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    animation: fadeUp 0.5s ease both;
 }
 
 .quotes-page h1 {
